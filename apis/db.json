@@ -1,0 +1,51 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Ryan"
+    },
+    {
+      "id": 2,
+      "name": "Jonathan"
+    },
+    {
+      "id": 3,
+      "name": "Colin"
+    },
+    {
+      "id": 4,
+      "name": "Syed"
+    },
+    {
+      "name": "D",
+      "id": 5
+    },
+    {
+      "name": "Lisa",
+      "id": 6
+    }
+  ],
+  "customer_addresses": [
+    {
+      "id": 1,
+      "customer_id": 2,
+      "street_address": "123 Big Walk Way",
+      "postal_code": "70523",
+      "country": "US"
+    },
+    {
+      "id": 2,
+      "customer_id": 3,
+      "street_address": "509 Charter Road",
+      "postal_code": "90021",
+      "country": "US"
+    },
+    {
+      "id": 3,
+      "customer_id": 1,
+      "street_address": "999 Night Stalker Road",
+      "postal_code": "12345",
+      "country": "US"
+    }
+  ]
+}
