@@ -17,12 +17,8 @@
       "name": "Syed"
     },
     {
-      "name": "D",
-      "id": 5
-    },
-    {
-      "name": "Lisa",
-      "id": 6
+      "name": "1231",
+      "id": 7
     }
   ],
   "customer_addresses": [
@@ -46,6 +42,13 @@
       "street_address": "999 Night Stalker Road",
       "postal_code": "12345",
       "country": "US"
+    },
+    {
+      "customer_id": 7,
+      "street_address": "1324",
+      "postal_code": "1233213",
+      "country": "321",
+      "id": 6
     }
   ]
 }
