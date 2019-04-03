@@ -1,15 +1,11 @@
 import axios from 'axios';
 
-export default axios.create({
-  baseURL: 'http://localhost:3001'
-})
-
 const customers = axios.create({
   baseURL: 'http://localhost:3001'
 });
 
 export const getCustomers = () => {
-  return customers.get('/customersAPI');
+  return customers.get('/customers');
 };
 
 export const getCustomer = (customerId) => {
@@ -17,7 +13,7 @@ export const getCustomer = (customerId) => {
 };
 
 export const createCustomer = (formValues) => {
-  return customers.post('/customersAPI', {name: formValues.name});
+  return customers.post('/customers', {name: formValues.name});
 };
 
 export const editCustomer = (formValues, customerId) => {

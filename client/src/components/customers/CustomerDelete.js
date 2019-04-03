@@ -1,8 +1,7 @@
 import React from 'react';
 import Modal from "../Modal";
 import { Link } from 'react-router-dom'
-import customers from "../../apis/customersAPI";
-import { deleteCustomer } from "../../apis/customersAPI";
+import { deleteCustomer, getCustomer } from "../../apis/customersAPI";
 import { deleteCustomerAddress, getCustomerAddresses } from '../../apis/customerAddressesAPI';
 import history from '../../history';
 import _ from "lodash";
@@ -15,19 +14,19 @@ class CustomerDelete extends React.Component{
   }
 
   initializeCustomer = async () => {
-    const response = await customers.get(`/customers/${this.props.match.params.id}`);
-    this.setState({ customer: response.data});
+    const response = await getCustomer(this.props.match.params.id);
+    await this.setState({ customer: response.data});
   };
 
   initializeCustomerAddress = async (customerId) => {
     const addresses = await getCustomerAddresses();
     const address = await _.find(addresses.data, {'customer_id': customerId});
-    this.setState({customerAddress: address});
+    await this.setState({customerAddress: address});
   };
 
   deleteCustomerAndAddress = async (customerId) => {
-    await deleteCustomer(customerId);
     await deleteCustomerAddress(this.state.customerAddress.id);
+    await deleteCustomer(customerId);
     history.push('/');
   };
 

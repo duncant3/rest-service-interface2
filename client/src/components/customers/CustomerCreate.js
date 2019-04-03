@@ -11,7 +11,6 @@ class CustomerCreate extends React.Component {
     const response = await createCustomer(formValues);
     await createCustomerAddress(formValues, response.data.id);
     history.push('/');
-
   };
 
   render() {

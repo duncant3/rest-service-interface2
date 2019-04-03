@@ -46,7 +46,7 @@ class CustomerEdit extends React.Component {
   };
 
   onSubmit = async (formValues, customerId) => {
-    editCustomer(formValues, customerId);
+    await editCustomer(formValues, customerId);
     const addressId = this.state.customerAddress.id;
     await editCustomerAddress(formValues, addressId, this.state.customerAddress.customer_id);
     history.push('/');
