@@ -6,7 +6,6 @@ import CustomerList from "./customers/CustomerList";
 import CustomerCreate from "./customers/CustomerCreate";
 import CustomerDelete from "./customers/CustomerDelete";
 import CustomerEdit from "./customers/CustomerEdit";
-import CustomerSelect from "./customers/CustomerSelect";
 
 
 
