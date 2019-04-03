@@ -7,11 +7,6 @@ import {Link} from "react-router-dom";
 const nameRequired = value => (value ? undefined : "Name is required!");
 
 class CustomerForm extends React.Component {
-
-  componentDidMount() {
-    console.log(this.props);
-  }
-
   renderError({ error, touched }){
     if (touched && error) {
       return (

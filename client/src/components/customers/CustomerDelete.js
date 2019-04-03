@@ -1,8 +1,9 @@
 import React from 'react';
 import Modal from "../Modal";
 import { Link } from 'react-router-dom'
-import customers from "../../apis/customers";
-import {deleteCustomerAddress, getCustomerAddresses} from '../../apis/customerAddressesAPI';
+import customers from "../../apis/customersAPI";
+import { deleteCustomer } from "../../apis/customersAPI";
+import { deleteCustomerAddress, getCustomerAddresses } from '../../apis/customerAddressesAPI';
 import history from '../../history';
 import _ from "lodash";
 
@@ -10,34 +11,31 @@ class CustomerDelete extends React.Component{
   state = { customer: {},
             customerAddress: {} };
   componentDidMount() {
-    this.getCustomer();
+    this.initializeCustomer().then(() => this.initializeCustomerAddress(this.state.customer.id));
   }
 
-  getCustomerAddress = async (customerId) => {
+  initializeCustomer = async () => {
+    const response = await customers.get(`/customers/${this.props.match.params.id}`);
+    this.setState({ customer: response.data});
+  };
+
+  initializeCustomerAddress = async (customerId) => {
     const addresses = await getCustomerAddresses();
     const address = await _.find(addresses.data, {'customer_id': customerId});
     this.setState({customerAddress: address});
-    console.log(this.state);
   };
 
-  deleteCustomer = async (customerId) => {
-    await customers.delete(`/customers/${customerId}`);
-    console.log(this.state);
-    await deleteCustomerAddress(this.state.customerAddress.id, customerId);
+  deleteCustomerAndAddress = async (customerId) => {
+    await deleteCustomer(customerId);
+    await deleteCustomerAddress(this.state.customerAddress.id);
     history.push('/');
-  };
-
-  getCustomer = async () => {
-    const response = await customers.get(`/customers/${this.props.match.params.id}`);
-    this.setState({ customer: response.data});
-    this.getCustomerAddress(this.state.customer.id);
   };
 
   renderActions(){
     return (
       <React.Fragment>
         <button
-          onClick={() => this.deleteCustomer(this.state.customer.id)}
+          onClick={() => this.deleteCustomerAndAddress(this.state.customer.id)}
           className="ui button negative">Delete</button>
         <Link to='/' className="ui button">Cancel</Link>
       </React.Fragment>

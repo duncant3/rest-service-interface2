@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
-import customers from '../../apis/customers';
 import { getCustomerAddresses } from '../../apis/customerAddressesAPI';
+import { getCustomers } from "../../apis/customersAPI";
 
 class CustomerList extends React.Component{
   state = {
@@ -11,13 +11,18 @@ class CustomerList extends React.Component{
     customerAddresses: []
   };
   componentDidMount(){
-    this.getCustomers();
-    this.getCustomerAddresses();
+    this.initializeCustomers();
+    this.initializeCustomerAddresses();
   };
 
-  getCustomers = async () => {
-    const response = await customers.get('/customers');
+  initializeCustomers = async () => {
+    const response = await getCustomers();
     this.setState({customers: response.data});
+  };
+
+  initializeCustomerAddresses = async () => {
+    const response = await getCustomerAddresses();
+    this.setState({customerAddresses: response.data});
   };
 
   renderAddress = (customerId) => {
@@ -26,11 +31,6 @@ class CustomerList extends React.Component{
       return address;
     }
     else return {};
-  };
-
-  getCustomerAddresses = async () => {
-    const response = await getCustomerAddresses();
-    this.setState({customerAddresses: response.data});
   };
 
   renderCreate = () => {

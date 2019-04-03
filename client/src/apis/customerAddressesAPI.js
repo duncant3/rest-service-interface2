@@ -8,6 +8,11 @@ export const getCustomerAddresses = () => {
   return customersAddresses.get('/customer_addresses');
 };
 
+// not necessary to get address via addressId
+export const getCustomerAddress = (addressId) => {
+  return customersAddresses.get(`/customer_addresses/${addressId}`);
+};
+
 export const createCustomerAddress = (formValues, customerId) => {
   return customersAddresses.post(`/customer_addresses/`, {
     customer_id: customerId,
@@ -26,6 +31,6 @@ export const editCustomerAddress = (formValues, addressId, customerId) => {
   })
 };
 
-export const deleteCustomerAddress = (addressId, customerId) => {
+export const deleteCustomerAddress = (addressId) => {
   return customersAddresses.delete(`customer_addresses/${addressId}`);
 };

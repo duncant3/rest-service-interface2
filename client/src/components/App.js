@@ -20,8 +20,6 @@ class App extends React.Component{
             <Route path="/customers/new/" component={CustomerCreate}/>
             <Route path="/customers/delete/:id" component={CustomerDelete}/>
             <Route path="/customers/edit/:id" component={CustomerEdit}/>
-            <Route path="/customers/show" component={CustomerSelect}/>
-
           </div>
         </Router>
       </div>
