@@ -21,5 +21,5 @@ You may now navigate to http://localhost:3000
 Navigate to the directory /client and run 
 ### `npm start`
 
-Once the server is running, run 
+Once the server is running, in a new terminal, run 
 ### `npm test` 
