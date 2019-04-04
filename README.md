@@ -15,3 +15,11 @@ Open a new terminal and navigate to directory /client and run
 ### `npm start`
 
 You may now navigate to http://localhost:3000
+
+## Testing
+
+Navigate to the directory /client and run 
+### `npm start`
+
+Once the server is running, run 
+### `npm test` 
