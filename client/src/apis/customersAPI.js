@@ -23,3 +23,5 @@ export const editCustomer = (formValues, customerId) => {
 export const deleteCustomer = (customerId) => {
   return customers.delete(`/customers/${customerId}`);
 };
+
+export { customers }
